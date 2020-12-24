@@ -1,5 +1,6 @@
 
 {
+  "declaration": true,
   "compilerOptions": {
       "module": "commonjs",
       "lib": [
