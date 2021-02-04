@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { tailorText } from "../helpers";
 
 interface Props extends Rect {
-	primaryText: string;
+	shortenText?: boolean;
+	primaryText?: string;
 	secondaryText?: string;
 	fontSize: number;
-	fontFamily?: string;
+	fontFamily: string;
 	transitionTiming?: number;
 }
 
 let Wrapper = styled.foreignObject<Pick<Props, "transitionTiming">>`
 	transition: ${({ transitionTiming = 0.5 }) => transitionTiming}s;
+	max-width: 100%;
 `;
 
 let SingleLabel = styled.div<Pick<Props, "fontSize" | "fontFamily" | "transitionTiming">>`
@@ -38,7 +41,22 @@ let SecondaryLabel = styled(SingleLabel)`
 	align-items: flex-start;
 `;
 
-export function Label({ x, y, w, h, primaryText, secondaryText, fontFamily, fontSize }: Props) {
+export function Label({
+	x,
+	y,
+	w,
+	h,
+	shortenText,
+	primaryText,
+	secondaryText,
+	fontFamily,
+	fontSize,
+}: Props) {
+	if (shortenText) {
+		primaryText = tailorText(primaryText!, fontFamily, fontSize, w);
+		secondaryText = tailorText(secondaryText!, fontFamily, fontSize, w);
+	}
+
 	if (!secondaryText) {
 		return (
 			<Wrapper x={x} y={y} width={w} height={h}>

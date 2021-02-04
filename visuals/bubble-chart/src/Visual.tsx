@@ -20,11 +20,19 @@ looker.plugins.visualizations.add({
 		[Option.FONT_FAMILY]: option("string", "select", "Font Family", "system-ui", FONT_FAMILY_OPTS),
 		[Option.FONT_SIZE]: option("string", "radio", "Font Size", "medium", SIZE_OPTS),
 		[Option.TOOLTIP_ENABLED]: {
+			order: 6,
 			type: "boolean",
 			label: "Enable Tooltips",
-			default: true
+			default: true,
+		},
+		[Option.SHORTEN_LABELS]: {
+			order: 7,
+			type: "boolean",
+			label: "Shorten Labels",
+			default: true,
 		},
 		[Option.COLOR_PALETTE]: {
+			order: 8,
 			type: "array",
 			display: "colors",
 			label: "Color Palette",

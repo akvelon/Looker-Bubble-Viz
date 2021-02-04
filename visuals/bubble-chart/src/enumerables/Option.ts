@@ -7,4 +7,5 @@ export const enum Option {
 	FONT_SIZE = "fontSize",
 	TOOLTIP_ENABLED = "tooltipEnabled",
 	COLOR_PALETTE = "colorPalette",
+	SHORTEN_LABELS = "shortenLabels",
 }

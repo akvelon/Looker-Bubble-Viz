@@ -121,6 +121,7 @@ export let BubbleChart = observer(() => {
 									y={y}
 									w={w}
 									h={h}
+									shortenText={config[Option.SHORTEN_LABELS]}
 									primaryText={data[config[Option.PRIMARY_LABEL]]?.value!}
 									secondaryText={data[config[Option.SECONDARY_LABEL]]?.value!}
 									fontFamily={config[Option.FONT_FAMILY]}
