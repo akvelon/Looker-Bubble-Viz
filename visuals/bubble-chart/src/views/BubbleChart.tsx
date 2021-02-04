@@ -79,6 +79,7 @@ export let BubbleChart = observer(() => {
 		<>
 			{config[Option.GROUP_BY] !== "none" && (
 				<Legend
+					fontSize={config[Option.FONT_SIZE]}
 					fontFamily={config[Option.FONT_FAMILY]}
 					scale={scale}
 					direction="column-reverse"
