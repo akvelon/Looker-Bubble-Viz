@@ -58,12 +58,11 @@ export let BubbleChart = observer(() => {
 		return hierarchyBuilder(data, config[Option.SIZE_BY], config[Option.GROUP_BY]);
 	}, [data, config]);
 
-	let scale = useMemo(() => {
-		return scaleOrdinal({
-			domain: root?.children?.map(({ data }) => data.name),
-			range: config[Option.COLOR_PALETTE],
-		});
-	}, [root, config]);
+	// TODO: memoizing this value causes an appearance of undefined in the legend
+	let scale = scaleOrdinal({
+		domain: root?.children?.map(({ data }) => data.name),
+		range: config[Option.COLOR_PALETTE],
+	});
 
 	let colorPalette = useMemo(() => {
 		return config[Option.COLOR_PALETTE] ?? COLOR_PALETTE;
