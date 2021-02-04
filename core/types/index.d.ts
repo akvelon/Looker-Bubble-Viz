@@ -102,9 +102,7 @@ declare namespace Looker {
 
 	interface Option {
 		type: string;
-		values?: Array<{
-			[key: string]: string;
-		}>;
+		values?: OptionValue[];
 		display?: string;
 		default?: any;
 		label: string;

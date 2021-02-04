@@ -3,7 +3,7 @@ import "@core/types";
 import React from "react";
 import { render } from "react-dom";
 
-import { COLOR_PALETTE, DEFAULT_OPTS, FONT_FAMILY_OPTS, SIZE_OPTS } from "./constants";
+import { COLOR_PALETTE, FONT_FAMILY_OPTS, SIZE_OPTS } from "./constants";
 import { Option } from "./enumerables";
 import { optionFactory as option } from "./helpers";
 import { Store, StoreContext } from "./Store";
@@ -13,10 +13,10 @@ let store: Store;
 
 looker.plugins.visualizations.add({
 	options: {
-		[Option.SIZE_BY]: option("string", "select", "Size By", "none", DEFAULT_OPTS),
-		[Option.GROUP_BY]: option("string", "select", "Group By", "none", DEFAULT_OPTS),
-		[Option.PRIMARY_LABEL]: option("string", "select", "Primary Label", "none", DEFAULT_OPTS),
-		[Option.SECONDARY_LABEL]: option("string", "select", "Secondary Label", "none", DEFAULT_OPTS),
+		[Option.SIZE_BY]: option("string", "select", "Size By", "none", []),
+		[Option.GROUP_BY]: option("string", "select", "Group By", "none", []),
+		[Option.PRIMARY_LABEL]: option("string", "select", "Primary Label", "none", []),
+		[Option.SECONDARY_LABEL]: option("string", "select", "Secondary Label", "none", []),
 		[Option.FONT_FAMILY]: option("string", "select", "Font Family", "system-ui", FONT_FAMILY_OPTS),
 		[Option.FONT_SIZE]: option("string", "radio", "Font Size", "medium", SIZE_OPTS),
 		[Option.TOOLTIP_ENABLED]: {

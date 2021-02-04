@@ -2,7 +2,7 @@ import isEqual from "lodash.isequal";
 import { autorun, makeAutoObservable } from "mobx";
 import { createContext } from "react";
 
-import { DATA_BOUND_FIELDS } from "./constants";
+import { DATA_BOUND_FIELDS, DEFAULT_OPTS } from "./constants";
 import { optionMapper } from "./helpers";
 
 export let StoreContext = createContext<Store>(null!);
@@ -23,10 +23,7 @@ export class Store {
 				if (DATA_BOUND_FIELDS.includes(k) && "values" in options[k]) {
 					let { dimensions = [], measures = [] } = this.config.query_fields ?? {};
 					let newOptions = [...dimensions, ...measures].map(optionMapper);
-					let defaultOptions = options[k].values?.filter(
-						option => !newOptions.find(field => isEqual(option, field))
-					)!;
-					options[k].values = [...newOptions, ...defaultOptions];
+					options[k].values = [...newOptions, ...DEFAULT_OPTS];
 				}
 			}
 			vis.trigger!("registerOptions" as Looker.Event, options);
