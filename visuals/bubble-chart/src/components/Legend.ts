@@ -4,7 +4,7 @@ import { LegendOrdinal } from "@visx/legend";
 
 import { Size } from "../enumerables";
 
-interface Props {
+interface Props extends Pick<Rect, "w"> {
 	fontSize: string;
 	fontFamily: string;
 }
@@ -25,7 +25,5 @@ function toPixel(fontSize: string): number {
 export let Legend = styled(LegendOrdinal)<Props>`
 	font-size: ${({ fontSize }) => toPixel(fontSize)}px;
 	font-family: ${({ fontFamily }) => fontFamily};
-	position: absolute;
-	left: 0;
-	top: 0;
+	width: ${({ w }) => w}px;
 `;

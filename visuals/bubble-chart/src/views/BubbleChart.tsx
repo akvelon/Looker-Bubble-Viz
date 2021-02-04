@@ -1,6 +1,7 @@
-import { observer } from "mobx-react-lite";
 import { toJS } from "mobx";
+import { observer } from "mobx-react-lite";
 import React, { MouseEvent, useCallback, useContext, useMemo } from "react";
+import styled from "styled-components";
 
 import { Group } from "@visx/group";
 import { scaleOrdinal } from "@visx/scale";
@@ -12,6 +13,12 @@ import { Option, Size } from "../enumerables";
 import { hierarchyBuilder } from "../helpers";
 import { useViewport } from "../hooks";
 import { StoreContext } from "../Store";
+
+let Wrapper = styled.div<Pick<Rect, "w" | "h">>`
+	display: flex;
+	width: ${({ w }) => w}px;
+	height: ${({ h }) => h}px;
+`;
 
 export let BubbleChart = observer(() => {
 	let { data, config } = useContext(StoreContext);
@@ -75,14 +82,20 @@ export let BubbleChart = observer(() => {
 		}
 	}, [config]);
 
+	let packWidth = useMemo(() => {
+		let legendEnabled = config[Option.GROUP_BY] ?? "none";
+		return legendEnabled === "none" ? width : width * 0.85;
+	}, [config, width]);
+
 	return (
-		<>
+		<Wrapper w={width} h={height}>
 			{config[Option.GROUP_BY] !== "none" && (
 				<Legend
+					w={width * 0.15}
 					fontSize={config[Option.FONT_SIZE]}
 					fontFamily={config[Option.FONT_FAMILY]}
 					scale={scale}
-					direction="column-reverse"
+					direction="column"
 					itemDirection="row-reverse"
 					labelMargin="0 20px 0 0"
 					shapeMargin="1px 0 0"
@@ -98,7 +111,7 @@ export let BubbleChart = observer(() => {
 					/>
 				</TooltipInPortal>
 			)}
-			<CirclePack root={root} width={width} height={height}>
+			<CirclePack root={root} width={packWidth} height={height}>
 				{bubbles =>
 					bubbles?.map(({ r, cx, cy, x, y, w, h, data, parent, children }, i) => {
 						let fill = scale(data.name);
@@ -133,6 +146,6 @@ export let BubbleChart = observer(() => {
 					})
 				}
 			</CirclePack>
-		</>
+		</Wrapper>
 	);
 });
