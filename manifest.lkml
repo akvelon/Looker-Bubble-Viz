@@ -2,5 +2,5 @@ visualization: {
     id: "akvelon-bubble-chart"
     label: "Bubble Chart by Akvelon"
     file: "visual.js"
-    sri_hash: "sha384-8KLMaOdWhWd2ooccqqUv+4MBP0cJmGNa5pWS21wFQLtJSqVREAzOpJI0VckngLh7"
+    sri_hash: "sha384-2N4fG2ACHSDGfYDqYD7fxKdOHuM8eqr2OYPCnNxCJN5NMwnkaPdWRZYwjrO/SXbk"
 }
