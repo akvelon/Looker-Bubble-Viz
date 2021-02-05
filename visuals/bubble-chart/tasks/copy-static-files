@@ -1,12 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env sh
 
-let { join } = require("path");
-let { readdirSync, copyFileSync, constants } = require("fs");
-
-let root = join(__dirname, "..");
-let files = readdirSync(join(root, "static")).map(file => join(root, "static", file));
-files.push(join(root, "LICENSE"), join(root, "README.md"));
-files.forEach(file => {
-	let [name] = file.split("/").reverse();
-	copyFileSync(file, join(root, "dist", name), constants.COPYFILE_EXCL);
-});
+rsync -av ./static/ ./dist
+cp {./README.md,LICENSE} ./dist
