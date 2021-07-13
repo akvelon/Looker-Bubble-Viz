@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+rsync -av ./static/ ./dist
+cp {./README.md,LICENSE} ./dist

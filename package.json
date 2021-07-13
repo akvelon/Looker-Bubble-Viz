@@ -1,0 +1,20 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Askhat Bikmetov <askhat.bikmetov@akvelon.com>",
+  "workspaces": [
+    "core/*",
+    "visuals/*"
+  ],
+  "dependencies": {
+    "@types/node": "^14.14.16",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/lodash.groupby": "^4.6.6",
+    "@types/lodash.isequal": "^4.5.5"
+  }
+}
